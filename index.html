@@ -25,7 +25,6 @@
       --nav-h: 64px;
       --cat-h: 50px;
       --drink-nav-h: 44px;
-      --safe-top: env(safe-area-inset-top, 0px);
     }
 
     /* ── RESET ── */
@@ -85,11 +84,11 @@
 
     /* Scroll offsets for fixed/sticky headers */
     section[id] {
-      scroll-margin-top: calc(var(--nav-h) + var(--safe-top));
+      scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
     }
 
     .sub[id] {
-      scroll-margin-top: calc(var(--nav-h) + var(--safe-top) + var(--cat-h) + 6px);
+      scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + var(--cat-h) + 6px);
     }
 
     /* ── LANGUAGE OVERLAY ── */
@@ -185,14 +184,14 @@
       top: 0;
       left: 0;
       right: 0;
-      height: calc(var(--nav-h) + var(--safe-top));
+      height: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
       background: rgba(18, 8, 0, .97);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: var(--safe-top) 1.4rem 0;
+      padding: env(safe-area-inset-top, 0px) 1.4rem 0;
       z-index: 1000;
       border-bottom: 1px solid rgba(196, 154, 60, .2);
     }
@@ -301,7 +300,7 @@
 
       .nav-links {
         position: fixed;
-        top: calc(var(--nav-h) + var(--safe-top));
+        top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
         left: 0;
         right: 0;
         background: rgba(18, 8, 0, .99);
@@ -411,7 +410,7 @@
     .hero-body {
       position: relative;
       text-align: center;
-      padding: calc(var(--nav-h) + var(--safe-top) + 1.5rem) 1.5rem 1.5rem;
+      padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 1.5rem) 1.5rem 1.5rem;
       max-width: 720px;
       width: 100%;
     }
@@ -596,7 +595,7 @@
     }
 
     .menu-top {
-      padding: calc(var(--nav-h) + var(--safe-top) + 3rem) 1.5rem 1.8rem;
+      padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 3rem) 1.5rem 1.8rem;
       text-align: center;
       background: linear-gradient(to bottom, var(--cream), var(--light));
     }
@@ -604,7 +603,7 @@
     /* Sticky category pill bar */
     .cat-bar {
       position: sticky;
-      top: calc(var(--nav-h) + var(--safe-top));
+      top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
       height: var(--cat-h);
       background: var(--light);
       z-index: 90;
@@ -947,7 +946,7 @@
     /* ── DRINK CATEGORY NAV ── */
     .drink-nav {
       position: sticky;
-      top: calc(var(--nav-h) + var(--safe-top) + var(--cat-h));
+      top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + var(--cat-h));
       z-index: 90;
       background: rgba(251, 245, 232, .97);
       backdrop-filter: blur(10px);
@@ -998,7 +997,7 @@
     }
 
     .drink-cat[id] {
-      scroll-margin-top: calc(var(--nav-h) + var(--safe-top) + var(--cat-h) + var(--drink-nav-h) + 8px);
+      scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + var(--cat-h) + var(--drink-nav-h) + 8px);
     }
 
     /* ── CONTACT ── */
