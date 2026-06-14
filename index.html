@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ياسمين | Yasmine Bakery & More</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── VARIABLES ── */
+    :root {
+      --cream: #F7EDD6;
+      --light: #FBF5E8;
+      --tan: #D4B896;
+      --gold: #C49A3C;
+      --brown: #7B4F2E;
+      --dark: #3D2416;
+      --white: #FFFFFF;
+      --sh: rgba(61, 36, 22, 0.10);
+      --sh2: rgba(61, 36, 22, 0.22);
+      --nav-h: 64px;
+      --cat-h: 50px;
+      --drink-nav-h: 44px;
+    }
+
+    /* ── RESET ── */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    [dir="ltr"] body,
+    [dir="ltr"] button,
+    [dir="ltr"] a {
+      font-family: 'Raleway', sans-serif;
+    }
+
+    [dir="rtl"] body,
+    [dir="rtl"] button,
+    [dir="rtl"] a {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Remove tap highlight & delay on all touch devices */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    /* Scroll offsets for fixed/sticky headers */
+    section[id] {
+      scroll-margin-top: var(--nav-h);
+    }
+
+    .sub[id] {
+      scroll-margin-top: calc(var(--nav-h) + var(--cat-h) + 6px);
+    }
+
+    /* ── LANGUAGE OVERLAY ── */
+    #lang-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(150deg, #120800 0%, #3D2416 45%, #7B4F2E 78%, #C49A3C 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 2rem 1.5rem;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+
+    #lang-overlay.gone {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .ov-logo {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(3.2rem, 16vw, 6.5rem);
+      color: var(--cream);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .ov-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: .75rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: .4rem 0 .5rem;
+    }
+
+    .ov-tag {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--tan);
+      font-size: .95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .ov-prompt {
+      color: rgba(247, 237, 214, .6);
+      font-size: .78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .ov-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .ov-btn {
+      min-width: 140px;
+      min-height: 52px;
+      padding: .85rem 1.8rem;
+      border: 2px solid var(--gold);
+      color: var(--cream);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      background: transparent;
+      font-family: 'Raleway', sans-serif;
+      transition: background .22s, color .22s;
+    }
+
+    .ov-btn.ar {
+      font-family: 'Cairo', sans-serif;
+      letter-spacing: .5px;
+      font-size: 1.1rem;
+    }
+
+    .ov-btn:active,
+    .ov-btn:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-h);
+      background: rgba(18, 8, 0, .97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.4rem;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(196, 154, 60, .2);
+    }
+
+    .nav-logo {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: .2rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: .3rem .85rem;
+      color: rgba(247, 237, 214, .75);
+      font-size: .78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+
+    [dir="rtl"] .nav-link {
+      letter-spacing: .3px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .lang-toggle {
+      min-height: 36px;
+      padding: .35rem .85rem;
+      border: 1px solid rgba(196, 154, 60, .5);
+      color: var(--gold);
+      border-radius: 3px;
+      font-size: .78rem;
+      letter-spacing: 1px;
+      transition: all .2s;
+    }
+
+    .lang-toggle:hover,
+    .lang-toggle:active {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+
+    /* Hamburger */
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: all .28s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .burger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .burger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .burger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile nav drawer */
+    @media (max-width: 680px) {
+      .burger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: rgba(18, 8, 0, .99);
+        flex-direction: column;
+        padding: .8rem 0 1.2rem;
+        gap: 0;
+        transform: translateY(-110%);
+        transition: transform .34s cubic-bezier(.4, 0, .2, 1);
+        border-bottom: 1px solid rgba(196, 154, 60, .15);
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+      }
+
+      .nav-link {
+        padding: 1rem 1.8rem;
+        font-size: .88rem;
+        min-height: 56px;
+        border-bottom: 1px solid rgba(247, 237, 214, .06);
+        border-right: none;
+        letter-spacing: 1.5px;
+      }
+
+      li:last-child .nav-link {
+        border-bottom: none;
+      }
+    }
+
+    /* ── SHARED ── */
+    .label {
+      display: block;
+      font-size: .7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      margin-bottom: .7rem;
+    }
+
+    [dir="rtl"] .label {
+      letter-spacing: 1.5px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: var(--dark);
+      line-height: 1.15;
+    }
+
+    [dir="rtl"] .sec-title {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: .9rem auto 0;
+    }
+
+    /* ── HOME / HERO ── */
+    #home {
+      padding-top: 0;
+    }
+
+    .hero {
+      position: relative;
+      height: 100svh;
+      height: 100vh;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('logo.png') center/cover no-repeat;
+      opacity: .22;
+      animation: bgFloat 9s ease-in-out infinite;
+    }
+
+    @keyframes bgFloat {
+
+      0%,
+      100% {
+        transform: scale(1) translateY(0);
+      }
+
+      50% {
+        transform: scale(1.06) translateY(-8px);
+      }
+    }
+
+    .hero-ov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(158deg, #120800 8%, rgba(61, 36, 22, .83) 55%, rgba(196, 154, 60, .1) 100%);
+    }
+
+    .hero-body {
+      position: relative;
+      text-align: center;
+      padding: calc(var(--nav-h) + 1.5rem) 1.5rem 1.5rem;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .hero-eye {
+      display: block;
+      font-size: .72rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      margin-bottom: 1.1rem;
+    }
+
+    [dir="rtl"] .hero-eye {
+      letter-spacing: 2px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .hero-name {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(4.5rem, 18vw, 8.5rem);
+      color: var(--cream);
+      font-weight: 900;
+      line-height: .9;
+      margin-bottom: .9rem;
+      text-shadow: 0 4px 40px rgba(0, 0, 0, .6);
+    }
+
+    .hero-tag {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(.95rem, 3vw, 1.3rem);
+      color: var(--tan);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      letter-spacing: .5px;
+    }
+
+    [dir="rtl"] .hero-tag {
+      font-family: 'Cairo', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: .95rem 2.8rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: .84rem;
+      border-radius: 3px;
+      box-shadow: 0 4px 24px rgba(196, 154, 60, .45);
+      transition: all .25s;
+      font-family: inherit;
+    }
+
+    [dir="rtl"] .hero-cta {
+      letter-spacing: .5px;
+    }
+
+    .hero-cta:active {
+      transform: scale(.97);
+    }
+
+    @media (min-width: 680px) {
+      .hero-cta:hover {
+        background: var(--cream);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 35px rgba(196, 154, 60, .5);
+      }
+    }
+
+    /* Bounce arrow at bottom of hero */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+      color: rgba(247, 237, 214, .45);
+      font-size: .68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Raleway', sans-serif;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .scroll-hint svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(7px);
+      }
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 5.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .about-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--brown);
+      margin: 1.5rem auto 0;
+      max-width: 620px;
+    }
+
+    .feats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.3rem;
+      margin-top: 3.5rem;
+    }
+
+    .feat {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.8rem 1.4rem;
+      box-shadow: 0 3px 18px var(--sh);
+      transition: transform .28s, box-shadow .28s;
+    }
+
+    @media (min-width:680px) {
+      .feat:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 32px var(--sh2);
+      }
+    }
+
+    .feat-icon {
+      font-size: 1.9rem;
+      margin-bottom: .75rem;
+    }
+
+    .feat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: .98rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .4rem;
+    }
+
+    [dir="rtl"] .feat-title {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .feat-text {
+      font-size: .85rem;
+      color: var(--brown);
+      line-height: 1.65;
+      opacity: .82;
+    }
+
+    /* ── MENU ── */
+    #menu {
+      background: var(--light);
+    }
+
+    .menu-top {
+      padding: calc(var(--nav-h) + 3rem) 1.5rem 1.8rem;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--cream), var(--light));
+    }
+
+    /* Sticky category pill bar */
+    .cat-bar {
+      position: sticky;
+      top: var(--nav-h);
+      height: var(--cat-h);
+      background: var(--light);
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: 0 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      border-bottom: 1px solid rgba(212, 184, 150, .45);
+    }
+
+    .cat-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-pill {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: .38rem 1.15rem;
+      border-radius: 50px;
+      border: 1.5px solid var(--tan);
+      color: var(--brown);
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: all .22s;
+    }
+
+    [dir="rtl"] .cat-pill {
+      letter-spacing: .3px;
+    }
+
+    .cat-pill.active {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+
+    @media (min-width:680px) {
+      .cat-pill:hover {
+        background: var(--gold);
+        color: var(--dark);
+        border-color: var(--gold);
+      }
+    }
+
+    /* Menu subsections */
+    .sub {
+      padding: 3.5rem 1.2rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sub-hdr {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .subsec-line {
+      border: none;
+      border-top: 1px dashed rgba(212, 184, 150, .55);
+      margin: 3.5rem 1.2rem 0;
+      max-width: 1200px;
+    }
+
+    /* Composite gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .gal-img {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 16px var(--sh);
+    }
+
+    .gal-img img {
+      height: 270px;
+      object-fit: cover;
+    }
+
+    @media (max-width:480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gal-img img {
+        height: 210px;
+      }
+    }
+
+    /* Featured separator */
+    .sep {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .sep::before,
+    .sep::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--tan);
+    }
+
+    .sep-text {
+      font-size: .68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      white-space: nowrap;
+    }
+
+    [dir="rtl"] .sep-text {
+      letter-spacing: .5px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* Item cards */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+
+    @media (max-width:360px) {
+      .items-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 3px 16px var(--sh);
+      transition: transform .28s, box-shadow .28s;
+    }
+
+    .card:active {
+      transform: scale(.99);
+    }
+
+    @media (min-width:680px) {
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 38px var(--sh2);
+      }
+    }
+
+    .card-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    @media (max-width:480px) {
+      .card-img {
+        height: 185px;
+      }
+    }
+
+    @media (min-width:680px) {
+      .card:hover .card-img {
+        transform: scale(1.04);
+      }
+    }
+
+    .card-body {
+      padding: 1.1rem 1.3rem 1.4rem;
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .4rem;
+      line-height: 1.3;
+    }
+
+    [dir="rtl"] .card-name {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .card-desc {
+      font-size: .82rem;
+      color: var(--brown);
+      line-height: 1.65;
+      margin-bottom: .85rem;
+      opacity: .8;
+    }
+
+    .card-price {
+      font-family: 'Cairo', sans-serif;
+      font-size: .96rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* Coming soon */
+    .coming {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .coming-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .coming-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: .5rem;
+    }
+
+    [dir="rtl"] .coming-title {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .coming-text {
+      color: var(--brown);
+      font-size: .9rem;
+      opacity: .75;
+    }
+
+    /* ── BLANK PHOTO PLACEHOLDER ── */
+    .card-img[src=""] {
+      height: 210px;
+      background: linear-gradient(135deg, var(--cream) 0%, #EDE0C4 100%);
+      border-bottom: 1px dashed var(--tan);
+    }
+
+    @media (max-width: 480px) {
+      .card-img[src=""] {
+        height: 185px;
+      }
+    }
+
+    /* ── DRINKS LIST ── */
+    .drinks-list {
+      max-width: 700px;
+      margin: 0 auto;
+      padding-bottom: 2rem;
+    }
+
+    .drink-cat {
+      margin-bottom: 2.8rem;
+    }
+
+    .drink-cat-label {
+      display: block;
+      font-size: .68rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      padding-bottom: .55rem;
+      border-bottom: 1.5px solid rgba(196, 154, 60, .4);
+      margin-bottom: .4rem;
+    }
+
+    [dir="rtl"] .drink-cat-label {
+      letter-spacing: 1px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .drink-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .65rem .2rem;
+      border-bottom: 1px solid rgba(212, 184, 150, .22);
+      gap: 1rem;
+    }
+
+    .drink-row:last-child {
+      border-bottom: none;
+    }
+
+    .drink-name {
+      font-size: .9rem;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    [dir="rtl"] .drink-name {
+      font-weight: 600;
+    }
+
+    .drink-price {
+      font-family: 'Cairo', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* ── DRINK CATEGORY NAV ── */
+    .drink-nav {
+      position: sticky;
+      top: calc(var(--nav-h) + var(--cat-h));
+      z-index: 90;
+      background: rgba(251, 245, 232, .97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(196, 154, 60, .18);
+      border-bottom: 1px solid rgba(196, 154, 60, .22);
+      margin: 0 -1.2rem 2.2rem;
+      padding: 0 .8rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      height: var(--drink-nav-h);
+    }
+
+    .drink-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .drink-pill-sm {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      height: 28px;
+      padding: 0 .85rem;
+      border-radius: 14px;
+      font-size: .68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--brown);
+      border: 1.5px solid rgba(212, 184, 150, .6);
+      background: transparent;
+      white-space: nowrap;
+      transition: background .18s, color .18s, border-color .18s;
+    }
+
+    [dir="rtl"] .drink-pill-sm {
+      letter-spacing: .3px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .drink-pill-sm.active {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
+    .drink-cat[id] {
+      scroll-margin-top: calc(var(--nav-h) + var(--cat-h) + var(--drink-nav-h) + 8px);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: linear-gradient(to bottom, var(--cream), var(--light));
+    }
+
+    .contact-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+      text-align: center;
+    }
+
+    .contact-desc {
+      color: var(--brown);
+      font-size: .95rem;
+      line-height: 1.8;
+      margin-top: 1.2rem;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 260px));
+      gap: 1.4rem;
+      margin-top: 3rem;
+      justify-content: center;
+    }
+
+    @media (max-width: 420px) {
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    .soc-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.8rem 1rem;
+      box-shadow: 0 3px 16px var(--sh);
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      transition: transform .28s, box-shadow .28s;
+    }
+
+    .soc-card:active {
+      transform: scale(.98);
+    }
+
+    @media (min-width:680px) {
+      .soc-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 38px var(--sh2);
+      }
+    }
+
+    .soc-icon {
+      font-size: 2.1rem;
+    }
+
+    .soc-icon-svg {
+      width: 54px;
+      height: 54px;
+      display: block;
+    }
+
+    .soc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    [dir="rtl"] .soc-name {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .soc-handle {
+      font-size: .8rem;
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: var(--tan);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .ft-logo {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: .3rem;
+    }
+
+    .ft-text {
+      font-size: .78rem;
+      opacity: .5;
+      letter-spacing: 1px;
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal:nth-child(2) {
+      transition-delay: .08s;
+    }
+
+    .reveal:nth-child(3) {
+      transition-delay: .16s;
+    }
+
+    .reveal:nth-child(4) {
+      transition-delay: .08s;
+    }
+
+    .reveal:nth-child(5) {
+      transition-delay: .16s;
+    }
+
+    .reveal:nth-child(6) {
+      transition-delay: .24s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════ LANGUAGE OVERLAY ═══════════════════ -->
+  <div id="lang-overlay">
+    <div class="ov-logo">ياسمين</div>
+    <div class="ov-sub">Bakery &amp; More</div>
+    <div class="ov-tag">Delicious &amp; Tasty</div>
+    <p class="ov-prompt">Choose your language / اختر لغتك</p>
+    <div class="ov-btns">
+      <button class="ov-btn" onclick="selectLang('en')">English</button>
+      <button class="ov-btn ar" onclick="selectLang('ar')">العربية</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ NAV ═══════════════════ -->
+  <nav>
+    <a href="#home" class="nav-logo">ياسمين</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link active" data-en="Home" data-ar="الرئيسية">Home</a></li>
+      <li><a href="#menu" class="nav-link" data-en="Menu" data-ar="القائمة">Menu</a></li>
+      <li><a href="#contact" class="nav-link" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-toggle" id="lang-btn" onclick="toggleLang()">عربي</button>
+      <button class="burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HOME ═══════════════════ -->
+  <section id="home">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-ov"></div>
+      <div class="hero-body">
+        <span class="hero-eye" data-en="Bakery &amp; More" data-ar="مخبز وأكثر">Bakery &amp; More</span>
+        <h1 class="hero-name">ياسمين</h1>
+        <p class="hero-tag" data-en="Delicious and Tasty" data-ar="لذيذ وشهي">Delicious and Tasty</p>
+        <a href="#menu" class="hero-cta" data-en="Explore Our Menu" data-ar="استكشف القائمة">Explore Our Menu</a>
+      </div>
+      <div class="scroll-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="about">
+      <div class="about-inner">
+        <span class="label" data-en="Our Story" data-ar="قصتنا">Our Story</span>
+        <h2 class="sec-title" data-en="Welcome to Yasmine" data-ar="أهلاً بك في ياسمين">Welcome to Yasmine</h2>
+        <div class="divider"></div>
+        <p class="about-text"
+          data-en="At Yasmine Bakery &amp; More, every bite is crafted with love and passion. From our signature croissants to hearty sandwiches, refreshing drinks, and a relaxing shisha experience — we bring warmth, quality, and creativity together in every visit."
+          data-ar="في ياسمين بيكري وأكثر، كل لقمة تُصنع بحب وشغف. من كرواسوناتنا المميزة إلى الساندويشات الشهية، والمشروبات المنعشة، وتجربة الشيشة المريحة — نجمع الدفء والجودة والإبداع في كل زيارة.">
+          At Yasmine Bakery &amp; More, every bite is crafted with love and passion. From our signature croissants to
+          hearty sandwiches, refreshing drinks, and a relaxing shisha experience — we bring warmth, quality, and
+          creativity together in every visit.
+        </p>
+        <!-- <div class="feats">
+          <div class="feat reveal">
+            <div class="feat-icon">🥐</div>
+            <div class="feat-title" data-en="Fresh Daily" data-ar="طازج يومياً">Fresh Daily</div>
+            <div class="feat-text" data-en="Baked fresh every morning for the perfect taste."
+              data-ar="يُخبز طازجاً كل صباح للحصول على المذاق المثالي.">Baked fresh every morning for the perfect taste.
+            </div>
+          </div>
+          <div class="feat reveal">
+            <div class="feat-icon">✨</div>
+            <div class="feat-title" data-en="Premium Quality" data-ar="جودة عالية">Premium Quality</div>
+            <div class="feat-text" data-en="Only the finest ingredients go into every recipe."
+              data-ar="نستخدم فقط أجود المكونات في كل وصفة.">Only the finest ingredients go into every recipe.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="feat-icon">💛</div>
+            <div class="feat-title" data-en="Made with Love" data-ar="مصنوع بحب">Made with Love</div>
+            <div class="feat-text" data-en="Every item is handcrafted with care and attention."
+              data-ar="كل عنصر يُصنع يدوياً بعناية واهتمام.">Every item is handcrafted with care and attention.</div>
+          </div>  -->
+      </div>
+    </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════ MENU ═══════════════════ -->
+  <section id="menu">
+
+    <div class="menu-top">
+      <span class="label" data-en="What We Offer" data-ar="ما نقدمه">What We Offer</span>
+      <h2 class="sec-title" data-en="Our Menu" data-ar="قائمتنا">Our Menu</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Sticky pill bar -->
+    <div class="cat-bar" id="cat-bar">
+      <a href="#food" class="cat-pill active" data-en="Sandwiches and Croissant" data-ar="ساندويشات وكرواسون">Sandwiches
+        and Croissant</a>
+      <a href="#drinks" class="cat-pill" data-en="Drinks" data-ar="المشروبات">Drinks</a>
+      <a href="#shisha" class="cat-pill" data-en="Hookah" data-ar="النراكيل">Hookah</a>
+    </div>
+
+    <!-- ── Sandwiches and Croissant ── -->
+    <div class="sub" id="food">
+      <div class="sub-hdr">
+        <span class="label" data-en="Our Menu" data-ar="قائمتنا">Our Menu</span>
+        <h3 class="sec-title" data-en="Sandwiches and Croissant" data-ar="ساندويشات وكرواسون">Sandwiches and Croissant
+        </h3>
+        <div class="divider"></div>
+      </div>
+
+      <div class="items-grid">
+
+        <!-- ✏️ ITEM 1 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic1.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="white loaf sandwiche" data-ar="ساندويش اللوف الابيض">Item Name</div>
+            <div class="card-desc"
+              data-en="Turkey slices with feta cheese,lettuce,and tomatoes,served on freshly baked white loaf bread with a light well balanced taste"
+              data-ar="  شرائح حبش طرية مع جبنة فيتاو خس و طماطم يقدم بخبز اللوف الطازج بطغم متوازن و حفيف">Description
+            </div>
+            <div class="card-price">5,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 2 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic2.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Brown loaf sandwiche" data-ar="ساندويش اللوف الاسمر">Item Name</div>
+            <div class="card-desc"
+              data-en="fresh brown loaf bread filled with feta cheese,Turkey slices, lettuce and tomatoes, with a light well-balanceed falvor"
+              data-ar="خبز لوف طازج محشي بجبنة فيتا شرائح حبش طرية.خس و طماطم بطعم متوازن و حفيف">Description</div>
+            <div class="card-price">6,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 3 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic3.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Cherry tomato & oregano focaccia sandwiche"
+              data-ar="ساندويش فوكاتشيا بالطماطم الكرزية و الاوريغانو ">
+              Item Name</div>
+            <div class="card-desc"
+              data-en="fres focaccia bread baked with cherry tomatoes and oregano, filled with feta cheese, Turkey,fresh lettuce and tomatoes "
+              data-ar="ساندويش فوكاتشيا بالطماطم الكرزية و الاوريغانو خبز فوكاتشيا طري مخبوز مع طماطم الكرزية و الاوىيغانو محشي بجبنة فيتا, حبش, خس و طماطم طازجة">
+              Description</div>
+            <div class="card-price">7,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 4 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic4.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="focaccia sandwiche with olives & rosemary"
+              data-ar="ساندويش فوكاتشيا بالزيتون و اكليل الجبل ">Item Name</div>
+            <div class="card-desc"
+              data-en="fresh focaccia bread with rosemary and olives, filled with feta cheese ,Turkey slices , lettuce and tomatoes"
+              data-ar="خبز فوكاتشيا طازج باكليل الجبل و الزيتون محشي بجبنة فيتا,شرائح حبش طرية,خس و طماطم">Description
+            </div>
+            <div class="card-price">7,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 5 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic5.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="croissant sandwiche" data-ar="ساندويش الكرواسون">Item Name</div>
+            <div class="card-desc"
+              data-en="fresh croissant filled with feta cheese , Turkey slices , tomatoes and lettuce "
+              data-ar="كرواسون طازج محشي بجبنة فيتا شرائح حبش طرية و طماطم و خس">Description</div>
+            <div class="card-price">6,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 6 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic6.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Ciabatta Sandwich " data-ar="ساندويش خبز الشباتا">Item Name</div>
+            <div class="card-desc"
+              data-en="Fresh ciabatta bread filled with spiced marinated chicken, served with lettuce, tomatoes and you choice of sauce"
+              data-ar="خبز شباتا طازج محشي بالدجاج المتبل بالبهارات يقدم مع الخس و الطماطم و الصلصة المختارة">
+              Description</div>
+            <div class="card-price">7,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 7 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic7.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Scrambled eggs with animal butter" data-ar="بيض مخفوق بالزبدة الحيوانية">
+              Item Name</div>
+            <div class="card-desc" data-en="Scrambled eggs with animal butter, avocado & herbs on fresh loaf"
+              data-ar="بيض مخفوق بالزبدة الحيوانية مع أفوكادو مزين بالخضار الورقية على خبزنا الطازج">Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 8 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic8.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Avocado Labneh" data-ar="لبنة أفوكادو">Item Name</div>
+            <div class="card-desc"
+              data-en="Creamy labneh on toasted loaf, topped with fresh avocado and a drizzle of pomegranate molasses"
+              data-ar="لينة كريمية على شريحة لوف محمصة.
+                مغطاة بالأفوكادو الطازج ورشة دبس رمان">Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 9 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic9.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Halloumi Croissant Sandwich" data-ar=" ساندويش كرواسون حلوم">Item Name</div>
+            <div class="card-desc" data-en="Fresh croissant filled with grilled halloumi cheese. lettuce, and tomatoes"
+              data-ar="كرواسون طازج محشو بجبنة حلوم مضوية
+.مع خس وطماطم">Description</div>
+            <div class="card-price">8,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 10 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic10.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="croissant scrambled eggs" data-ar=" كرواسون سكرامبلد ايك">Item Name</div>
+            <div class="card-desc" data-en="Buttery scrambled eggs with cream in a fresh croissant, topped with greens"
+              data-ar="بيض مخفوق بالزبدة والكريمة داخل كرراسون طري. مزين بحضار ورقبة طازجة">Description</div>
+            <div class="card-price">8,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 11 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic11.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Callayeh of Halloumi" data-ar=" قلاية حلوم">Item Name</div>
+            <div class="card-desc" data-en="Tomatoes, peppers, onions, and special spices sauteed together, with grilled hallouri,
+Served with our freshly baked loaf bread"
+              data-ar="طماطم طارجة مع خلفل ويصل ونتبيلة بهارات خاصة. مطهية على نار هادئة ومقدمة مع شرائح الحلوم المشوي. يقدم مع خبزنا الطازج">
+              Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 12 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic12.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Vegetable Omelette" data-ar="أومليت الخضار">Item Name</div>
+            <div class="card-desc"
+              data-en="Eggs with mixed peppers, onions, mushrooms, and parmesan & mozzarella cheese, gently cooked and served with our freshly baked loaf bread"
+              data-ar="بيض مع فلفل ملون وبصل و فطر. مع جبن البرميزان والموزريلا، مطهو على نار هادئة. ويقدم مع خبزنا اللوف الطازج.">
+              Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 13 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic13.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en=" Multi-cheese omelette" data-ar=" ومليت الاجبان المتعددة  "">Item Name</div>
+            <div class=" card-desc" data-en="Multi-cheese omelette served with toasted bread"
+              data-ar="ومليت الاجبان المتعددة يقدم مع خبزنا المحمص  ">Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 14 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic14.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="   omelette" data-ar="  ومليت  ">Item Name</div>
+            <div class="card-desc" data-en="Fluffy omelette topped with sauteed spinach and mushrooms"
+              data-ar=" أومليت هش بالسبانغ والفطر الطازج، يُقدم مع شرائح خبزنا المحمص  ">Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 15 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic15.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Creamy Mushroom & Scrambled Eggs Duo"
+              data-ar="  ديو الفطر الكريمي والبيض المخفوق">Item Name</div>
+            <div class="card-desc" data-en="Two slices of fresh loaf bread:
+one topped with soft scrambled eggs slow-cooked in natural butter,
+the other finished with creamy sauteed mushrooms" data-ar="شريحتان من خبز اللوف الطازج:
+إحداهما مغطاة ببيض مخفوق ناعم ،مطهو بزيدة طبيعية واللوف الثاني مغطاة مع فطر سوتيه كريمي غني">Description</div>
+            <div class="card-price">14,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 16 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic16.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="  Avocado - Mushroom Duo" data-ar=" أفوكادو - فطر ديو">Item Name</div>
+            <div class="card-desc"
+              data-en="Two toasted loaf slices: one with mashed avocado, cherry tomatoes & feta, and the other with sauteed mushrooms in our special seasoning & feta."
+              data-ar=":شريحتان من خبز اللوف المحمص
+الأولى معطاة بأفوكادو مهروس، طماطم كرزية طازجة
+وجبنة فينا
+والثانية معطاة بفطر طازج مطبوخ بتنبيلتنا الخاصة مع جبنة فيتا">Description</div>
+            <div class="card-price">14,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 17 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic17.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Cheese, Mushroom & Spinach  " data-ar="كرواسون الجبن بالفطر والسبانغ ">Item
+              Name</div>
+            <div class="card-desc" data-en="Croissant Sandwich
+Buttery fresh croissant with mushrooms, spinach, and melted cheese."
+              data-ar="كرواسون طازج بالزبدة مع الفطر السبانغ والجبن الذائب">Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 18 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic18.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="French Toast  " data-ar="فرينش توست  ">Item Name</div>
+            <div class="card-desc"
+              data-en="Two slices of our freshly baked bread, golden-toasted, filled with creamy Nutella, served with smooth pastry cream and fresh strawberries and blueberries"
+              data-ar="شريحتان من خبزنا الطازج المحمص محضر بطريقتنا
+بالخاصة
+بمحشو نوتيلا، مع كريمة باتيسيري وفراولة وبلو بيري
+طازجة">Description</div>
+            <div class="card-price">10,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 19 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic19.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Cube Croissant" data-ar="  كيوب كرواسون">Item Name</div>
+            <div class="card-desc"
+              data-en="Cube-shaped croissant with crispy, flaky layers on the outside, freshly filled with your choice of pistachio, strawberry, Nutella, or chocolate."
+              data-ar="كرواسون بشكل مكعب بطبقات هشة ومقرمشة من الخارج، محشو طازجًا مع اختيار النكهة: بستاشيو، فراولة، نوتيلا، شوكولا.">
+              Description</div>
+            <div class="card-price">7,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 20 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic20.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Berry Croissant" data-ar="  كرواسون التوت">Item Name</div>
+            <div class="card-desc"
+              data-en="Flaky croissant filled with smooth pastry cream, fresh strawberries, and fresh berries."
+              data-ar="كرواسون هش ومحشو بكريمة البيستري الناعمة، محشى بالفراولة الطازجة والتوت الطازج.">Description
+            </div>
+            <div class="card-price">8,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 21 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic21.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Nutella Croissant" data-ar="كرواسون النوتيلا  ">Item Name</div>
+            <div class="card-desc" data-en="Golden, flaky croissant filled with rich and creamy Nutella."
+              data-ar="كرواسون ذهبي هش ومحشو بنوتيلا كريمية غنية.">
+              Description</div>
+            <div class="card-price">8,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 22 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic22.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Kunafa Croissant" data-ar="كنافة كرواسون">Item Name</div>
+            <div class="card-desc"
+              data-en="Soft and crispy croissant filled with a rich pistachio kunafa filling, coated with chocolate and topped with toasted kunafa pastry and pistachio pieces."
+              data-ar="كرواسون طري ومقرمش، محشي بحشوة كنافة غنية بالفستق، مغلف بطبقة شوكولا ومزين بعجينة الكنافة المحمصة وقطع الفستق.">
+              Description</div>
+            <div class="card-price">9,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 23 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic23.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Kinder Croissant" data-ar="كندر كرواسون">Item Name</div>
+            <div class="card-desc" data-en="Golden flaky croissant filled with white chocolate and rich Kinder cream."
+              data-ar="كرواسون ذهبي هش، محشي بشوكولا بيضاء وكريمة كندر الغنية.">Description</div>
+            <div class="card-price">8,000 IQD</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ITEM 24 -->
+        <div class="card reveal">
+          <img class="card-img" src="Generated photos/pic24.png" alt="">
+          <div class="card-body">
+            <div class="card-name" data-en="Rose Cream Croissant  " data-ar="روز كريم كرواسون">Item Name</div>
+            <div class="card-desc"
+              data-en="Golden flaky croissant filled with special smooth whipped cream and fresh strawberry slices."
+              data-ar="كرواسون ذهبي هش، محشي بكريمة خاصة مخفوقة بقوام ناعم، ومحشي بشرائح الفراولة الطازجة. ">Description
+            </div>
+            <div class="card-price">8,000 IQD</div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /food -->
+
+    <hr class="subsec-line">
+
+    <!-- ── Drinks ── -->
+    <div class="sub" id="drinks">
+      <div class="sub-hdr">
+        <span class="label" data-en="What We Serve" data-ar="ما نقدمه">What We Serve</span>
+        <h3 class="sec-title" data-en="Drinks" data-ar="المشروبات">Drinks</h3>
+        <div class="divider"></div>
+      </div>
+
+      <nav class="drink-nav" id="drink-nav" aria-label="Drink categories">
+        <a href="#dc-espresso" class="drink-pill-sm active" data-en="Espresso" data-ar="إسبريسو">Espresso</a>
+        <a href="#dc-filtered" class="drink-pill-sm" data-en="Filter" data-ar="مفلترة">Filter</a>
+        <a href="#dc-matcha" class="drink-pill-sm" data-en="Matcha" data-ar="ماتشا">Matcha</a>
+        <a href="#dc-hot" class="drink-pill-sm" data-en="Hot" data-ar="ساخن">Hot</a>
+        <a href="#dc-juices" class="drink-pill-sm" data-en="Juices" data-ar="عصائر">Juices</a>
+        <a href="#dc-smoothies" class="drink-pill-sm" data-en="Smoothies" data-ar="سموذي">Smoothies</a>
+        <a href="#dc-shakes" class="drink-pill-sm" data-en="Shakes" data-ar="ميلك شيك">Shakes</a>
+      </nav>
+
+      <div class="drinks-list">
+
+        <!-- Coffee & Espresso -->
+        <div class="drink-cat" id="dc-espresso">
+          <span class="drink-cat-label" data-en="Coffee &amp; Espresso" data-ar="قهوة وإسبريسو">Coffee &amp;
+            Espresso</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Single Espresso" data-ar=" سنكل إسبريسو ">Single Espresso</span>
+            <span class="drink-price">3,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Double Espresso" data-ar="دبل إسبريسو ">Double Espresso</span>
+            <span class="drink-price">4,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Americano" data-ar="أمريكانو">Americano</span>
+            <span class="drink-price">4,500 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Cappuccino" data-ar="كابتشينو">Cappuccino</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Latte" data-ar="لاتيه">Latte</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Spanish Latte" data-ar="سبانش لاتيه ">Spanish Latte</span>
+            <span class="drink-price">6,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Vanilla Latte" data-ar="لاتيه فانيلا">Vanilla Latte</span>
+            <span class="drink-price">6,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Caramel Latte" data-ar="لاتيه كراميل">Caramel Latte</span>
+            <span class="drink-price">6,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Hazelnut Latte" data-ar="لاتيه بندق">Hazelnut Latte</span>
+            <span class="drink-price">6,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Cortado" data-ar="كورتادو">Cortado</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Hot Macchiato" data-ar="ماكياتو ساخن">Hot Macchiato</span>
+            <span class="drink-price">4,500 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Iced Macchiato" data-ar="ماكياتو بارد">Iced Macchiato</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Hot Caramel Macchiato" data-ar="ماكياتو كراميل ساخن">Hot Caramel
+              Macchiato</span>
+            <span class="drink-price">5,500 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Iced Caramel Macchiato" data-ar="ماكياتو كراميل بارد">Iced Caramel
+              Macchiato</span>
+            <span class="drink-price">6,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Mocha" data-ar="موكا">Mocha</span>
+            <span class="drink-price">6,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Nescafe" data-ar="نسكافيه">Nescafe</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+        </div>
+
+        <!-- Filtered Coffee -->
+        <div class="drink-cat" id="dc-filtered">
+          <span class="drink-cat-label" data-en="Filtered Coffee" data-ar="قهوة مفلترة">Filtered Coffee</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="V60" data-ar="V60">V60</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Chemex" data-ar="كيمكس">Chemex</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Cold Brew" data-ar="كولد برو">Cold Brew</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+        </div>
+
+        <!-- Matcha -->
+        <div class="drink-cat" id="dc-matcha">
+          <span class="drink-cat-label" data-en="Matcha" data-ar="ماتشا">Matcha</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Matcha Latte" data-ar=" لاتيه ماتشا">Matcha Latte</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Vanilla Matcha Latte" data-ar="لاتيه ماتشا فانيلا">Vanilla Matcha
+              Latte</span>
+            <span class="drink-price">8,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Strawberry Matcha Latte" data-ar="لاتيه ماتشا فراولة">Strawberry Matcha
+              Latte</span>
+            <span class="drink-price">8,000 IQD</span>
+          </div>
+        </div>
+
+        <!-- Hot Drinks -->
+        <div class="drink-cat" id="dc-hot">
+          <span class="drink-cat-label" data-en="Hot Drinks" data-ar="مشروبات ساخنة">Hot Drinks</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Hot Chocolate" data-ar="هوت جوكلت ">Hot Chocolate</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Sahlab" data-ar="سحلب">Sahlab</span>
+            <span class="drink-price">4,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Karak Tea" data-ar="شاي كرك">Karak Tea</span>
+            <span class="drink-price">4,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Turkish Coffee" data-ar="قهوة تركية">Turkish Coffee</span>
+            <span class="drink-price">3,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Iraqi Tea" data-ar="شاي عراقي">Iraqi Tea</span>
+            <span class="drink-price">2,000 IQD</span>
+          </div>
+        </div>
+
+        <!-- Fresh Juices -->
+        <div class="drink-cat" id="dc-juices">
+          <span class="drink-cat-label" data-en="Fresh Juices" data-ar="عصائر طازجة">Fresh Juices</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Orange Juice" data-ar="عصير برتقال">Orange Juice</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Strawberry Juice" data-ar="عصير فراولة">Strawberry Juice</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Banana Juice" data-ar="عصير موز">Banana Juice</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Lemon Juice" data-ar="عصير ليمون">Lemon Juice</span>
+            <span class="drink-price">5,000 IQD</span>
+          </div>
+        </div>
+
+        <!-- Smoothies -->
+        <div class="drink-cat" id="dc-smoothies">
+          <span class="drink-cat-label" data-en="Smoothies" data-ar="سموذي">Smoothies</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Mango Smoothie" data-ar="سموذي مانجا">Mango Smoothie</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Strawberry Smoothie" data-ar="سموذي فراولة">Strawberry Smoothie</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Blueberry Smoothie" data-ar="سموذي بلوبيري  ">Blueberry Smoothie</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Green Apple Smoothie" data-ar="سموذي تفاح أخضر">Green Apple
+              Smoothie</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+        </div>
+
+        <!-- Milkshakes -->
+        <div class="drink-cat" id="dc-shakes">
+          <span class="drink-cat-label" data-en="Milkshakes" data-ar="ميلك شيك">Milkshakes</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Chocolate Milkshake" data-ar="جوكلت ميلك شيك  ">Chocolate
+              Milkshake</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Vanilla Milkshake" data-ar="فانيلا ميلك شيك">Vanilla Milkshake</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Strawberry Milkshake" data-ar=" ستروبيري ميلك شيك">Strawberry
+              Milkshake</span>
+            <span class="drink-price">7,000 IQD</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="subsec-line">
+
+    <!-- ── Hookah ── -->
+    <div class="sub" id="shisha">
+      <div class="sub-hdr">
+        <span class="label" data-en=" " data-ar=" ">Sit Back &amp; Relax</span>
+        <h3 class="sec-title" data-en="Hookah" data-ar="النراكيل">Hookah</h3>
+        <div class="divider"></div>
+      </div>
+
+      <div class="drinks-list">
+        <div class="drink-cat">
+          <span class="drink-cat-label" data-en=" Hookah" data-ar="نركيلة تركية"> Hookah</span>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Yasmin  Hookah" data-ar="نركيلة ياسمين">Yasmin Turkish
+              Hookah</span>
+            <span class="drink-price">14,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Tropical Fruits  Hookah" data-ar="نركيلة فواكه استوائية">Tropical
+              Fruits Hookah</span>
+            <span class="drink-price">14,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Gum &amp; Mint  Hookah" data-ar="نركيلة علج ونعناع">Gum &amp; Mint
+              Hookah</span>
+            <span class="drink-price">12,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="English  Hookah" data-ar="نركيلة إنكليزي">English
+              Hookah</span>
+            <span class="drink-price">12,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Special Lemon &amp; Mint Turkish Hookah"
+              data-ar="نركيلة ليمون ونعناع سبيشل">Special Lemon &amp; Mint Hookah</span>
+            <span class="drink-price">13,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Lemon &amp; Mint  Hookah" data-ar="نركيلة ليمون ونعناع">Lemon &amp;
+              Mint Hookah</span>
+            <span class="drink-price">12,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Citrus  Hookah" data-ar="نركيلة حمضيات">Citrus
+              Hookah</span>
+            <span class="drink-price">12,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Double Apple  Hookah" data-ar="نركيلة تفاحتين">Double Apple
+              Hookah</span>
+            <span class="drink-price">12,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="German Yasmin  Hookah" data-ar="نركيلة ياسمين ألماني">German Yasmin
+              Hookah</span>
+            <span class="drink-price">15,000 IQD</span>
+          </div>
+          <div class="drink-row">
+            <span class="drink-name" data-en="Natural  Hookah" data-ar="نركيلة طبيعي">Natural
+              Hookah</span>
+            <span class="drink-price">25,000 IQD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /menu -->
+
+  <!-- ═══════════════════ CONTACT ═══════════════════ -->
+  <section id="contact">
+    <div class="contact-inner">
+      <span class="label" data-en="Find Us" data-ar="تجدنا">Find Us</span>
+      <h2 class="sec-title" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</h2>
+      <div class="divider"></div>
+      <p class="contact-desc" data-en="Follow us on social media to stay updated with our latest offers and news."
+        data-ar="تابعونا على وسائل التواصل الاجتماعي لتبقوا على اطلاع بأحدث عروضنا وأخبارنا.">
+        Follow us on social media to stay updated with our latest offers and news.
+      </p>
+      <div class="social-grid">
+        <a class="soc-card reveal" href="https://www.instagram.com/yasmin.bkry?igsh=cjFsdnczZno5a3Vo" target="_blank"
+          rel="noopener">
+          <svg class="soc-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stop-color="#f09433" />
+                <stop offset="33%" stop-color="#e6683c" />
+                <stop offset="55%" stop-color="#dc2743" />
+                <stop offset="78%" stop-color="#cc2366" />
+                <stop offset="100%" stop-color="#bc1888" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#ig-grad)"
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+          <div class="soc-name">Instagram</div>
+          <div class="soc-handle">@yasmin.bkry</div>
+        </a>
+        <a class="soc-card reveal" href="https://wa.me/9647717224222" target="_blank" rel="noopener">
+          <svg class="soc-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#25D366"
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+          </svg>
+          <div class="soc-name">WhatsApp</div>
+          <div class="soc-handle" data-en="Chat with us" data-ar="راسلنا">Chat with us</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer>
+    <div class="ft-logo">ياسمين</div>
+    <p class="ft-text" data-en="Yasmine Bakery &amp; More — Delicious and Tasty"
+      data-ar="ياسمين بيكري وأكثر — لذيذ وشهي">
+      Yasmine Bakery &amp; More — Delicious and Tasty
+    </p>
+  </footer>
+
+  <!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+  <script>
+    /* ── Language ── */
+    let lang = localStorage.getItem('yasmine_lang') || null;
+
+    function selectLang(l) {
+      lang = l;
+      localStorage.setItem('yasmine_lang', l);
+      document.getElementById('lang-overlay').classList.add('gone');
+      apply(l);
+    }
+
+    function toggleLang() { selectLang(lang === 'en' ? 'ar' : 'en'); }
+
+    function apply(l) {
+      const html = document.getElementById('html-root');
+      html.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+      html.setAttribute('lang', l === 'ar' ? 'ar' : 'en');
+      document.getElementById('lang-btn').textContent = l === 'ar' ? 'EN' : 'عربي';
+      document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        el.textContent = l === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+      });
+    }
+
+    /* ── Mobile nav ── */
+    function toggleNav() {
+      const links = document.getElementById('nav-links');
+      const burger = document.getElementById('burger');
+      links.classList.toggle('open');
+      burger.classList.toggle('open');
+    }
+
+    function closeNav() {
+      document.getElementById('nav-links').classList.remove('open');
+      document.getElementById('burger').classList.remove('open');
+    }
+
+    document.querySelectorAll('.nav-link, .cat-pill').forEach(el => {
+      el.addEventListener('click', closeNav);
+    });
+
+    /* ── Active nav highlight on scroll ── */
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-38% 0px -58% 0px', threshold: 0 });
+
+    document.querySelectorAll('section[id]').forEach(s => navObs.observe(s));
+
+    /* ── Active category pill highlight on scroll ── */
+    const catPills = document.querySelectorAll('.cat-pill');
+    const catBar = document.getElementById('cat-bar');
+
+    function scrollPillIntoView(id) {
+      const pill = document.querySelector(`.cat-pill[href="#${id}"]`);
+      if (!pill || !catBar) return;
+      const offset = pill.offsetLeft - catBar.offsetWidth / 2 + pill.offsetWidth / 2;
+      catBar.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+
+    const catObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          catPills.forEach(p => p.classList.toggle('active', p.getAttribute('href') === '#' + e.target.id));
+          scrollPillIntoView(e.target.id);
+        }
+      });
+    }, { rootMargin: '-25% 0px -70% 0px', threshold: 0 });
+
+    document.querySelectorAll('.sub[id]').forEach(s => catObs.observe(s));
+
+    /* ── Drink category pills ── */
+    const drinkPills = document.querySelectorAll('.drink-pill-sm');
+    const drinkNav = document.getElementById('drink-nav');
+
+    function scrollDrinkPill(id) {
+      const pill = document.querySelector(`.drink-pill-sm[href="#${id}"]`);
+      if (!pill || !drinkNav) return;
+      const offset = pill.offsetLeft - drinkNav.offsetWidth / 2 + pill.offsetWidth / 2;
+      drinkNav.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+
+    const drinkCatObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          drinkPills.forEach(p => p.classList.toggle('active', p.getAttribute('href') === '#' + e.target.id));
+          scrollDrinkPill(e.target.id);
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    document.querySelectorAll('.drink-cat[id]').forEach(c => drinkCatObs.observe(c));
+
+    /* ── Scroll reveal ── */
+    function reveal() {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 60)
+          el.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll', reveal, { passive: true });
+
+    /* ── Init ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      if (lang) {
+        document.getElementById('lang-overlay').classList.add('gone');
+        apply(lang);
+      }
+      reveal();
+    });
+  </script>
+</body>
+
+</html>
