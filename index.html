@@ -25,6 +25,7 @@
       --nav-h: 64px;
       --cat-h: 50px;
       --drink-nav-h: 44px;
+      --safe-top: env(safe-area-inset-top, 0px);
     }
 
     /* ── RESET ── */
@@ -84,11 +85,11 @@
 
     /* Scroll offsets for fixed/sticky headers */
     section[id] {
-      scroll-margin-top: var(--nav-h);
+      scroll-margin-top: calc(var(--nav-h) + var(--safe-top));
     }
 
     .sub[id] {
-      scroll-margin-top: calc(var(--nav-h) + var(--cat-h) + 6px);
+      scroll-margin-top: calc(var(--nav-h) + var(--safe-top) + var(--cat-h) + 6px);
     }
 
     /* ── LANGUAGE OVERLAY ── */
@@ -184,14 +185,14 @@
       top: 0;
       left: 0;
       right: 0;
-      height: var(--nav-h);
+      height: calc(var(--nav-h) + var(--safe-top));
       background: rgba(18, 8, 0, .97);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.4rem;
+      padding: var(--safe-top) 1.4rem 0;
       z-index: 1000;
       border-bottom: 1px solid rgba(196, 154, 60, .2);
     }
@@ -300,7 +301,7 @@
 
       .nav-links {
         position: fixed;
-        top: var(--nav-h);
+        top: calc(var(--nav-h) + var(--safe-top));
         left: 0;
         right: 0;
         background: rgba(18, 8, 0, .99);
@@ -410,7 +411,7 @@
     .hero-body {
       position: relative;
       text-align: center;
-      padding: calc(var(--nav-h) + 1.5rem) 1.5rem 1.5rem;
+      padding: calc(var(--nav-h) + var(--safe-top) + 1.5rem) 1.5rem 1.5rem;
       max-width: 720px;
       width: 100%;
     }
@@ -595,7 +596,7 @@
     }
 
     .menu-top {
-      padding: calc(var(--nav-h) + 3rem) 1.5rem 1.8rem;
+      padding: calc(var(--nav-h) + var(--safe-top) + 3rem) 1.5rem 1.8rem;
       text-align: center;
       background: linear-gradient(to bottom, var(--cream), var(--light));
     }
@@ -603,7 +604,7 @@
     /* Sticky category pill bar */
     .cat-bar {
       position: sticky;
-      top: var(--nav-h);
+      top: calc(var(--nav-h) + var(--safe-top));
       height: var(--cat-h);
       background: var(--light);
       z-index: 90;
@@ -742,9 +743,10 @@
       gap: 1.4rem;
     }
 
-    @media (max-width:360px) {
+    @media (max-width: 640px) {
       .items-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: .7rem;
       }
     }
 
@@ -776,9 +778,27 @@
       transition: transform .5s ease;
     }
 
-    @media (max-width:480px) {
+    @media (max-width: 640px) {
       .card-img {
-        height: 185px;
+        height: 130px;
+      }
+
+      .card-body {
+        padding: .6rem .75rem .9rem;
+      }
+
+      .card-name {
+        font-size: .82rem;
+        margin-bottom: .25rem;
+      }
+
+      .card-desc {
+        font-size: .72rem;
+        margin-bottom: .55rem;
+      }
+
+      .card-price {
+        font-size: .82rem;
       }
     }
 
@@ -856,9 +876,9 @@
       border-bottom: 1px dashed var(--tan);
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
       .card-img[src=""] {
-        height: 185px;
+        height: 130px;
       }
     }
 
@@ -927,7 +947,7 @@
     /* ── DRINK CATEGORY NAV ── */
     .drink-nav {
       position: sticky;
-      top: calc(var(--nav-h) + var(--cat-h));
+      top: calc(var(--nav-h) + var(--safe-top) + var(--cat-h));
       z-index: 90;
       background: rgba(251, 245, 232, .97);
       backdrop-filter: blur(10px);
@@ -978,7 +998,7 @@
     }
 
     .drink-cat[id] {
-      scroll-margin-top: calc(var(--nav-h) + var(--cat-h) + var(--drink-nav-h) + 8px);
+      scroll-margin-top: calc(var(--nav-h) + var(--safe-top) + var(--cat-h) + var(--drink-nav-h) + 8px);
     }
 
     /* ── CONTACT ── */
