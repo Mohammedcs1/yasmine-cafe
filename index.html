@@ -293,41 +293,43 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Mobile nav drawer */
+    /* Mobile nav — always visible, no hamburger */
     @media (max-width: 680px) {
       .burger {
-        display: flex;
+        display: none;
       }
 
       .nav-links {
-        position: fixed;
-        top: calc(var(--nav-h));
-        left: 0;
-        right: 0;
-        background: rgba(18, 8, 0, .99);
-        flex-direction: column;
-        padding: .8rem 0 1.2rem;
+        position: static;
+        flex-direction: row;
+        background: transparent;
+        padding: 0;
         gap: 0;
-        transform: translateY(-110%);
-        transition: transform .34s cubic-bezier(.4, 0, .2, 1);
-        border-bottom: 1px solid rgba(196, 154, 60, .15);
-      }
-
-      .nav-links.open {
-        transform: translateY(0);
+        transform: none;
+        transition: none;
+        border: none;
       }
 
       .nav-link {
-        padding: 1rem 1.8rem;
-        font-size: .88rem;
-        min-height: 56px;
-        border-bottom: 1px solid rgba(247, 237, 214, .06);
-        border-right: none;
-        letter-spacing: 1.5px;
+        font-size: .62rem;
+        letter-spacing: .5px;
+        padding: .3rem .4rem;
+        min-height: 44px;
+        border-bottom: 2px solid transparent;
       }
 
-      li:last-child .nav-link {
-        border-bottom: none;
+      [dir="rtl"] .nav-link {
+        letter-spacing: 0;
+      }
+
+      .nav-logo {
+        font-size: 1.25rem;
+      }
+
+      .lang-toggle {
+        font-size: .62rem;
+        padding: .3rem .5rem;
+        letter-spacing: .5px;
       }
     }
 
